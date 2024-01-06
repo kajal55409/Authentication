@@ -4,31 +4,29 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Admin_home from "./Admin_home";
 import Home_user from "./Home_user";
 
-
 const Home = () => {
-  const [userType,setUsertype]=useState()
-  useEffect(()=>{
-    getUser()
-  },[])
+  const [userType, setUsertype] = useState();
+  useEffect(() => {
+    getUser();
+  }, []);
 
-  const getUser = async ()=>{
-    try{
+  const getUser = async () => {
+    try {
       const userLoginData = JSON.parse(
         await AsyncStorage.getItem("UserLoginData")
       );
-       setUsertype(userLoginData.userTypeData);
+   
       console.log("userdata", userLoginData.userTypeData);
-    }catch(error){
-      console.log(error)
+         setUsertype(userLoginData.userTypeData);
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
       <View style={styles.container}>
-        <Text>Home</Text>
-        {}
-        <Admin_home />
-        <Home_user/>
+        <Text>Main home</Text>
+        {userType === "User" ? <Home_user /> : <Admin_home />}
       </View>
     </SafeAreaView>
   );

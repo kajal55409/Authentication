@@ -14,6 +14,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
+    const [selected, setSelected] = useState();
   const navigation = useNavigation();
   const UserTypedata = [
     { name: "Admin", value: "Admin" },
@@ -21,7 +22,7 @@ const Login = () => {
   ];
   const loginUserData = {
     Email: email,
-    userTypeData: UserTypedata,
+    userTypeData: selected,
   };
   const HandleLogin = async () => {
 
@@ -39,6 +40,7 @@ const Login = () => {
         JSON.stringify(loginUserData)
       );
       navigation.navigate("Home");
+      console.log("user type", loginUserData);
     } catch (error) {
       console.log(error);
     }
@@ -65,19 +67,20 @@ const Login = () => {
               backgroundColor: "white",
               borderColor: "grey",
               borderWidth: 0.5,
-              height: 80,
             }}
             title="Select the user type"
             dropdownTextStyle={{
-              color: "black",
+              color: "grey",
             }}
+            onSelect={(text) => setSelected(text)}
+            // containerStyle={{height:90}}
           />
         </View>
         <View style={{ marginTop: 30 }}>
           <Button
             title="Login"
             //  onPress={() => navigation.navigate("Home")}
-            onPress={()=>HandleLogin()}
+            onPress={() => HandleLogin()}
           />
         </View>
       </View>

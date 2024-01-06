@@ -166,8 +166,8 @@ const UserTypedata = [
           <View style={{ marginVertical: 10 }}>
             <Button
               title="Registration"
-              // onPress={() => navigation.navigate("Login")}
-              onPress={() => HandleSignUp()}
+              onPress={() => navigation.navigate("Login")}
+              // onPress={() => HandleSignUp()}
             />
           </View>
         </View>

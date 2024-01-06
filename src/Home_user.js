@@ -21,8 +21,9 @@ const [data,setData]=useState()
       };
   return (
     <View>
-      <Text>Name:{data.Name}</Text>
-      <Text>Email:{data.Email}</Text>
+      {/* <Text>Name:{data.Name}</Text> */}
+      {/* <Text>Email:{data.Email}</Text> */}
+      <Text>user home</Text>
     </View>
   );
 }
